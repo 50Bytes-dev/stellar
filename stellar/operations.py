@@ -67,7 +67,8 @@ def copy_database(raw_conn, from_database, to_database):
 
     if raw_conn.engine.dialect.name == "postgresql":
         sqlalchemy_utils.functions.create_database(
-            "%s%s" % (raw_conn.engine.url, to_database), template=from_database
+            get_engine_url(raw_conn, to_database),
+            template=from_database,
         )
     elif raw_conn.engine.dialect.name == "mysql":
         # Horribly slow implementation.

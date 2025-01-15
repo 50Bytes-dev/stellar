@@ -59,8 +59,12 @@ def gc():
 
 @stellar.command()
 @click.argument("name", required=False)
-def snapshot(name):
+@click.option("--verbose", is_flag=True)
+def snapshot(name, verbose):
     """Takes a snapshot of the database"""
+    if verbose:
+        logging.basicConfig(level=logging.DEBUG)
+
     app = get_app()
     upgrade_from_old_version(app)
     name = name or app.default_snapshot_name

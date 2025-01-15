@@ -3,5 +3,7 @@
 .tox
 dist
 .venv
+.vscode
 .python-version
 uv.lock
+stellar.yaml
