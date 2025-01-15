@@ -209,7 +209,7 @@ def init():
             and url.endswith("/")
             and url.startswith("postgresql://")
         ):
-            connection_url = url + "template1"
+            connection_url = url + "postgres"
         else:
             connection_url = url
 
@@ -260,7 +260,7 @@ def init():
     raw_url = url
 
     if engine.dialect.name == "postgresql":
-        raw_url = raw_url + "template1"
+        raw_url = raw_url + "postgres"
 
     with open("stellar.yaml", "w") as project_file:
         project_file.write(
